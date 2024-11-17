@@ -26,14 +26,20 @@ const model = {
 const viev = {
     init() {
         this.renderNotes(model.notes)
+
+        
+        
     },
+
+    
+
+
+
     renderNotes(notes) {
         const list = document.querySelector('.notes-list');
         let notesHTML = '';
         for (let i = 0; i < notes.length; i++) {
         const note = notes[i]
-
-
             notesHTML += ` 
             <li id="${note.id}">
     <div class="notes-title" style="background-color: #${note.color}">
@@ -46,6 +52,8 @@ const viev = {
             `;
             list.innerHTML = notesHTML;
         }
+        let countNotes = document.querySelector('.count_notes');
+        countNotes.textContent = model.notes.length;
     },
 }
 
