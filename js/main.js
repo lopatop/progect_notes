@@ -45,7 +45,9 @@ const viev = {
     <div class="notes-title" style="background-color: #${note.color}">
         <h3>${note.title}</h3>
         <button></button>
-        <input type="radio" class="radio-active" ${note.isFavorite ? 'checked' : ''}>
+        <button class="favorite-btn">
+            <img src="${note.isFavorite ? './images/icons/active.png' : './images/icons/nactive.png'}" alt="favorite">
+        </button>
     </div>
     <p>${note.content}</p>
 </li>
