@@ -1,0 +1,16 @@
+.radio-active {
+    appearance: none; /* Убираем стандартное оформление радиокнопки */
+    -webkit-appearance: none; /* Для Safari */
+    width: 24px; /* Размер кнопки */
+    height: 24px;
+    background: url('../images/icons/heart%20active.png') no-repeat center center; /* Изображение для невыбранного состояния */
+    background-size: contain; /* Масштабируем изображение по размеру кнопки */
+    cursor: pointer; /* Указываем, что элемент кликабельный */
+    border: none; /* Убираем рамку */
+}
+
+/* Стили для радиокнопки, когда она выбрана */
+.radio-active:checked {
+    background: url('../images/icons/heart%20inactive.png') no-repeat center center; /* Изображение для выбранного состояния */
+    background-size: contain;
+}

@@ -1,0 +1,145 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    height: 60px;
+    margin-bottom: 12px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 24px;
+    width: 1152px;
+    height: 228px;
+    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    background: #fff;
+    margin: 24px 62px;
+    font-weight: 400;
+    color: #919191;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+}
+
+.text-title {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 6px 12px;
+    width: 344px;
+    height: 36px;
+}
+
+.text-content {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 0px 12px;
+    width: 848px;
+    height: 96px;
+
+}
+
+.form-text-button-radio {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.label {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.radio-list {
+    width: 212px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.radio {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    appearance: none;
+    outline: 5px solid transparent;
+    cursor: pointer;
+}
+
+.radio[value="yellow"] {
+    background-color: #F3DB7D;
+}
+
+.radio[value="green"] {
+    background-color: #C2F37D;
+}
+
+.radio[value="blue"] {
+    background-color: #7DE1F3;
+}
+
+.radio[value="red"] {
+    background-color: #F37D7D;
+}
+
+.radio[value="purple"] {
+    background-color: #E77DF3;
+}
+
+.radio:checked {
+    border-color: white;
+    box-shadow: 0 0 0 3px white, 0 0 0 4.5px #007BFF;
+}
+
+.add-note {
+    padding-right: 24px;
+    border-radius: 10px;
+    border: none;
+    width: 232px;
+    height: 36px;
+    background: #457cdc;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.icon-button {
+    padding-right: 8px;
+    stroke-width: 2px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #e8e8e8;
+}

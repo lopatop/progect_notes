@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    background: #fafafc;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 64px;
+    box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
+    background: #fff;
+}
+.header_count_tasks{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+.header-wrapper{
+    display: flex;
+    align-items: center;
+}
