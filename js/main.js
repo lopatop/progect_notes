@@ -38,10 +38,6 @@ const model = {
     addNode(id, title, content, color, isFavorite = true) {
         const note = null;
     },
-    renderNotesCount(){
-        const countNotes = document.querySelector('.count_notes');
-        countNotes.textContent = this.notes.length;
-    }
 
 }
 
@@ -49,10 +45,17 @@ const model = {
 const viev = {
     init() {
         this.renderNotes(model.notes)
-        model.renderNotesCount()
-
+        this.renderNotesCount()
+    },
+    renderNotesCount(){
+        const countNotes = document.querySelector('.count_notes');
+        countNotes.textContent = model.notes.length;
+    },
+    getShowFavorites(){
+    const filterBox = document.querySelector('filter-box')
+    filterBox.addEventListener(click,(event) =>{
         
-        
+    })
     },
 
     renderNotes(notes) {
@@ -88,7 +91,7 @@ init()
 
 const controller = {
     renderNotesCount(){
-        model.renderNotesCount()
+        view.renderNotesCount()
     },
 
 
