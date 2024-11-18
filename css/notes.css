@@ -1,0 +1,50 @@
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+img {
+    fill: none;
+    stroke: black; 
+    stroke-width: 2; 
+}
+.notes-list li {
+padding: 12px 0px 0px 0px;
+border-radius: 10px;
+max-width: 368px;
+height: 216px;
+box-shadow: 0 4px 8px 0 rgba(11, 12, 13, 0.08), 0 8px 16px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+list-style-type: none;
+}
+.notes-title{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 12px;
+}
+.notes-title h3{
+font-weight: 500;
+font-size: 16px;
+line-height: 1.5;
+color: #292515;
+margin: 0px;
+}
+.notes-list p{
+    font-weight: 400;
+font-size: 14px;
+line-height: 1.71429;
+padding: 12px;
+margin: 0px;
+}
+.delite-btn .favorite-btn img{
+    width: 100px;
+}
+
+.favorite-btn, .delite-btn {
+    background: transparent; 
+    border: none; 
+    padding: 0;
+}

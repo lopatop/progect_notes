@@ -4,7 +4,7 @@ const MOCK_NOTES = [
         title: 'Работа с формами',
         content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
         color: 'F3DB7D',
-        isFavorite: false,
+        isFavorite: true,
 
     },
 ]
@@ -13,7 +13,7 @@ const MOCK_NOTES = [
 
 const model = {
     notes: MOCK_NOTES,
-    addNode(id, title, content, color, isFavorite = false) {
+    addNode(id, title, content, color, isFavorite = true) {
         const note = null;
     }
 
@@ -44,10 +44,13 @@ const viev = {
             <li id="${note.id}">
     <div class="notes-title" style="background-color: #${note.color}">
         <h3>${note.title}</h3>
-        <button></button>
+        <div class = del-vav-btn>
         <button class="favorite-btn">
-            <img src="${note.isFavorite ? './images/icons/active.png' : './images/icons/nactive.png'}" alt="favorite">
+            <img src="${note.isFavorite ? './images/icons/active.svg' : './images/icons/inactive.svg'}" alt="Изображение сердечка">
         </button>
+        <button class ="delite-btn"><img src="./images/icons/trash.svg" alt="Изображение сердечка"></button>
+        </div>
+        
     </div>
     <p>${note.content}</p>
 </li>
@@ -79,3 +82,4 @@ const colors = {
     RED: 'F37D7D',
     PURPLE: 'E77DF3',
 }
+
