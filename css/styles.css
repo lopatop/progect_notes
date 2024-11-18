@@ -15,19 +15,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 1280px;
     height: 60px;
     padding: 0 64px;
     box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
     background: #fff;
 }
-.header_count_tasks{
+
+.header_count_tasks {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    
+    justify-content: end;
+    width: 100%; /* Устанавливаем ширину на 100% от родительского элемента */
 }
-.header-wrapper{
+
+.header-wrapper {
     display: flex;
     align-items: center;
+}
+
+.filter-box {
+    display: flex;
+    justify-content: end;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 2;
+    color: #000;
+    padding-right: 64px;
+    max-width: 1280px;
 }

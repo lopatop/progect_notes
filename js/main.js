@@ -7,6 +7,30 @@ const MOCK_NOTES = [
         isFavorite: true,
 
     },
+    {
+        id: 2,
+        title: 'Работа с формами',
+        content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
+        color: 'F3DB7D',
+        isFavorite: false,
+
+    },
+    {
+        id: 2,
+        title: 'Работа с формами',
+        content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
+        color: 'F3DB7D',
+        isFavorite: false,
+
+    },
+    {
+        id: 2,
+        title: 'Работа с формами',
+        content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
+        color: 'F3DB7D',
+        isFavorite: false,
+
+    },
 ]
 
 
@@ -50,7 +74,6 @@ const viev = {
         </button>
         <button class ="delite-btn"><img src="./images/icons/trash.svg" alt="Изображение сердечка"></button>
         </div>
-        
     </div>
     <p>${note.content}</p>
 </li>
