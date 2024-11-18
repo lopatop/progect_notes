@@ -33,31 +33,27 @@ const MOCK_NOTES = [
     },
 ]
 
-
-
 const model = {
     notes: MOCK_NOTES,
     addNode(id, title, content, color, isFavorite = true) {
         const note = null;
+    },
+    renderNotesCount(){
+        const countNotes = document.querySelector('.count_notes');
+        countNotes.textContent = this.notes.length;
     }
 
 }
 
 
-
-
-
 const viev = {
     init() {
         this.renderNotes(model.notes)
+        model.renderNotesCount()
 
         
         
     },
-
-    
-
-
 
     renderNotes(notes) {
         const list = document.querySelector('.notes-list');
@@ -80,8 +76,7 @@ const viev = {
             `;
             list.innerHTML = notesHTML;
         }
-        let countNotes = document.querySelector('.count_notes');
-        countNotes.textContent = model.notes.length;
+        
     },
 }
 
@@ -92,6 +87,9 @@ function init() {
 init()
 
 const controller = {
+    renderNotesCount(){
+        model.renderNotesCount()
+    },
 
 
 }
