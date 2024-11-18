@@ -52,9 +52,9 @@ const viev = {
         countNotes.textContent = model.notes.length;
     },
     getShowFavorites(){
-    const filterBox = document.querySelector('filter-box')
+    const filterBox = document.querySelector('#show-favorites')
     filterBox.addEventListener(click,(event) =>{
-        
+        if(event.target.classList.contains(''))
     })
     },
 
