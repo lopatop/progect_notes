@@ -21,7 +21,7 @@ ul{
 }
 .notes-list li {
 border-radius: 10px;
-max-width: 368px;
+width: 368px;
 max-height: 216px;
 box-shadow: 0 4px 8px 0 rgba(11, 12, 13, 0.08), 0 8px 16px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
 list-style-type: none;
