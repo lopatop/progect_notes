@@ -75,8 +75,10 @@ const model = {
         viev.renderNotes(this.notes)
         viev.renderNotesCount()
     },
-    getAllNotes() {
-        viev.renderNotes(this.notes); 
+    deliteNote(noteId){
+        this.notes = this.notes.filter((note) => note.id !== noteId)
+        viev.renderNotes(this.notes)
+        viev.renderNotesCount()
     },
 
 
@@ -115,9 +117,13 @@ const viev = {
 
         const list = document.querySelector('.notes-list');
         list.addEventListener('click', (event) => {
-            if (event.target.classList.contains('favorite-img')) {
+            if (event.target.classList.contains('favorite-note-img')) {
                 const noteId = +event.target.closest('li').id;
                 controller.addFavorite(noteId);
+            }
+            if (event.target.classList.contains('delite-note-img')) {
+                const noteId = +event.target.closest('li').id;
+                controller.deliteNote(noteId)
             }
         });
 
@@ -125,9 +131,7 @@ const viev = {
         inputFavorite.addEventListener('click', (event) => {
             if (event.target.classList.contains('show-favorites')){
                 controller.getNotesFavorite()
-            } else {
-                controller.getAllNotes()
-            }
+            } 
         })
 
     },
@@ -135,6 +139,9 @@ const viev = {
 
     renderNotes(notes) {
         const list = document.querySelector('.notes-list');
+        if (notes.length === 0){
+            return list.innerHTML = '';
+        }
         let notesHTML = '';
         notes.forEach((note) => {
             notesHTML += ` 
@@ -143,9 +150,11 @@ const viev = {
         <h3 class ="note-title">${note.title}</h3>
         <div class = del-vav-btn>
         <button class="favorite-btn">
-            <img class="favorite-img" src="${note.isFavorite ? './images/icons/active.svg' : './images/icons/inactive.svg'}" alt="Изображение сердечка">
+            <img class="favorite-note-img" src="${note.isFavorite ? './images/icons/active.svg' : './images/icons/inactive.svg'}" alt="Изображение сердечка">
         </button>
-        <button class ="delite-btn"><img src="./images/icons/trash.svg" alt="Изображение корзины"></button>
+        <button class ="delite-btn">
+        <img class = "delite-note-img" src="./images/icons/trash.svg" alt="Изображение корзины">
+        </button>
         </div>
     </div>
     <p class="note-content">${note.content}</p>
@@ -186,9 +195,10 @@ const controller = {
     getNotesFavorite(){
         model.getNotesFavorite()
     },
-    getAllNotes(){
-        model.getAllNotes()
+    deliteNote(noteId){
+        model.deliteNote(noteId)
     }
+
 }
 
 function init() {
