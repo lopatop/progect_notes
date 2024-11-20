@@ -26,7 +26,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: end;
-    width: 100%; /* Устанавливаем ширину на 100% от родительского элемента */
+    width: 100%;
+    /* Устанавливаем ширину на 100% от родительского элемента */
 }
 
 .header-wrapper {
@@ -45,30 +46,61 @@ body {
     max-width: 1280px;
     transition: opacity 0.3s ease, display 0s 0.3s;
 }
+
 .filter-box.hidden {
     opacity: 0;
     display: none;
 }
+
 .hidden {
     display: none;
 }
+
 .message-box {
     display: flex;
-    justify-content: end; 
+    justify-content: end;
     align-items: center;
     width: 100%;
-    min-height: 300px ;
+    min-height: 300px;
     padding-right: 64px;
 }
-.message-add-note{
-border-radius: 10px;
-padding: 12px 24px;
-width: 230px;
-height: 48px;
-box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
-background: #47b27d;
-font-weight: 500;
-font-size: 14px;
-line-height: 1.71429;
-color: #fff;
+
+.message-add-note {
+    border-radius: 10px;
+    padding: 12px 24px;
+    width: 230px;
+    height: 48px;
+    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    background: #47b27d;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.71429;
+    color: #fff;
+}
+
+.message-removed-note {
+    border-radius: 10px;
+    padding: 12px 24px;
+    width: 230px;
+    height: 48px;
+    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    background: #ff0000;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.71429;
+    color: #fff;
+}
+
+.message-max-length {
+    border-radius: 10px;
+    padding: 12px 24px;
+    width: 427px;
+    height: 48px;
+    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    background: #f23d5b;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.71429;
+    color: #fff;
+
 }

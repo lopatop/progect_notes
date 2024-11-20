@@ -42,7 +42,6 @@ const colors = {
     PURPLE: 'E77DF3',
 }
 
-
 const model = {
     notes: [],
     noteColor: 'F3DB7D',
@@ -94,16 +93,16 @@ const viev = {
         this.renderNotes(model.notes)
         this.renderNotesCount()
 
-        const form = document.querySelector('.form');
-        const textTitle = document.querySelector('.text-title');
-        const textContent = document.querySelector('.text-content');
+        const form = document.querySelector('.form')
+        const textTitle = document.querySelector('.text-title')
+        const textContent = document.querySelector('.text-content')
         form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const title = textTitle.value;
-            const content = textContent.value;
-            controller.addNote(title, content);
-            textTitle.value = '';
-            textContent.value = '';
+            event.preventDefault()
+            const title = textTitle.value
+            const content = textContent.value
+            controller.addNote(title, content)
+            textTitle.value = ''
+            textContent.value = ''
         })
 
         const radioColors = document.querySelectorAll('.radio');
@@ -112,22 +111,22 @@ const viev = {
                 const color = event.target.value;
                 controller.addColor(color);
 
-            });
-        });
+            })
+        })
 
-        const list = document.querySelector('.notes-list');
+        const list = document.querySelector('.notes-list')
         list.addEventListener('click', (event) => {
             if (event.target.classList.contains('favorite-note-img')) {
-                const noteId = +event.target.closest('li').id;
+                const noteId = +event.target.closest('li').id
                 controller.addFavorite(noteId);
             }
             if (event.target.classList.contains('delite-note-img')) {
-                const noteId = +event.target.closest('li').id;
+                const noteId = +event.target.closest('li').id
                 controller.deliteNote(noteId)
             }
-        });
+        })
 
-        const inputFavorite = document.querySelector('.filter-box');
+        const inputFavorite = document.querySelector('.filter-box')
         inputFavorite.addEventListener('click', (event) => {
             if (event.target.classList.contains('show-favorites')){
                 controller.getNotesFavorite()
@@ -138,8 +137,8 @@ const viev = {
 
 
     renderNotes(notes) {
-        const list = document.querySelector('.notes-list');
-        const filterBox = document.querySelector('.filter-box');
+        const list = document.querySelector('.notes-list')
+        const filterBox = document.querySelector('.filter-box')
         
         if (notes.length === 0){
             filterBox.classList.add('hidden')
@@ -179,16 +178,16 @@ const viev = {
 
 
     renderNotesCount() {
-        const countNotes = document.querySelector('.count_notes');
-        countNotes.textContent = model.renderNotesCount();
+        const countNotes = document.querySelector('.count_notes')
+        countNotes.textContent = model.renderNotesCount()
     },
     showMessage(type) {
-        const message = document.querySelector(type);
+        const message = document.querySelector(type)
         if (!message) return;
-        message.classList.remove('hidden'); 
+        message.classList.remove('hidden')
         setTimeout(() => {
-            message.classList.add('hidden');
-        }, 3000);
+            message.classList.add('hidden')
+        }, 3000)
     }
 
 }
@@ -200,14 +199,14 @@ const controller = {
         viev.renderNotesCount()
     },
     addNote(title, content) {
-        if (title.trim() === '') return alert('Введите текст названия');
+        if (title.trim() === '') return alert('Введите текст названия')
         if (title.trim().length > 50) {
-            viev.showMessage('.message-max-length');
+            viev.showMessage('.message-max-length')
             return;
         }
-        if (content.trim() === '') return alert('Введите текст новой заметки');
+        if (content.trim() === '') return alert('Введите текст новой заметки')
         model.addNote(title, content);
-        viev.showMessage('.message-add-note');
+        viev.showMessage('.message-add-note')
     },
     addColor(color) {
         model.addColor(color)
