@@ -36,7 +36,8 @@
             <div class="form-text-button-radio">
                 <div class="description">
                     <label class="label" for="note-description">Описание новой заметки</label>
-                    <textarea id="note-description" class="text-content" placeholder="Напишите описание новой заметки..."></textarea>
+                    <textarea id="note-description" class="text-content"
+                        placeholder="Напишите описание новой заметки..."></textarea>
                 </div>
 
                 <div class="radio-button-container">
@@ -44,7 +45,8 @@
                         <legend class="label">Выберите цвет заметки</legend>
                         <ul class="radio-list">
                             <li>
-                                <input type="radio" checked class="radio" name="color" value="yellow" aria-label="yellow">
+                                <input type="radio" checked class="radio" name="color" value="yellow"
+                                    aria-label="yellow">
                             </li>
                             <li>
                                 <input type="radio" class="radio" name="color" value="green" aria-label="green">
@@ -70,12 +72,18 @@
             <input type="checkbox" class="show-favorites">
             <label class="show-favorites">Показать только избранные заметки</label>
         </div>
-        
+
         <ul class="notes-list"></ul>
         <div class="message-box">
-            <p class="message-add-note hidden">Заметка добавлена!</p>
-            <p class="message-removed-note hidden" >Заметка удалена!</p>
-            <p class="message-max-length hidden" >Максимальная длина заголовка - 50 символов!</p>
+            <p class="message-add-note hidden">
+                <!-- <img src="./images/icons/Done.svg">  -->
+                Заметка добавлена!
+            </p>
+            <p class="message-removed-note hidden">Заметка удалена!</p>
+            <p class="message-max-length hidden">
+                <!-- <img src="./images/icons/warning.svg"> -->
+                Максимальная длина заголовка - 50 символов!
+            </p>
         </div>
     </main>
     <script src="./js/main.js"></script>

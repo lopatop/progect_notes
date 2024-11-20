@@ -62,7 +62,7 @@ body {
     align-items: center;
     width: 100%;
     min-height: 300px;
-    padding-right: 64px;
+    padding-right: 220px;
 }
 
 .message-add-note {
@@ -76,6 +76,7 @@ body {
     font-size: 14px;
     line-height: 1.71429;
     color: #fff;
+    align-self: center;
 }
 
 .message-removed-note {
@@ -89,6 +90,7 @@ body {
     font-size: 14px;
     line-height: 1.71429;
     color: #fff;
+    align-self: center;
 }
 
 .message-max-length {
