@@ -140,7 +140,7 @@ const viev = {
     renderNotes(notes) {
         const list = document.querySelector('.notes-list');
         const filterBox = document.querySelector('.filter-box');
-
+        
         if (notes.length === 0){
             filterBox.classList.add('hidden')
             return list.innerHTML = `
@@ -152,8 +152,7 @@ const viev = {
         }else {
             filterBox.classList.remove('hidden');
         }
-        
-        
+
         let notesHTML = '';
         notes.forEach((note) => {
             notesHTML += ` 
@@ -183,6 +182,14 @@ const viev = {
         const countNotes = document.querySelector('.count_notes');
         countNotes.textContent = model.renderNotesCount();
     },
+    showMessage(type) {
+        const message = document.querySelector(type);
+        if (!message) return;
+        message.classList.remove('hidden'); 
+        setTimeout(() => {
+            message.classList.add('hidden');
+        }, 3000);
+    }
 
 }
 
@@ -193,10 +200,14 @@ const controller = {
         viev.renderNotesCount()
     },
     addNote(title, content) {
-        if (title.trim() === '') return alert('Введите текст названия')
-        if (title.trim().length >= 50) return alert('длина больше 50 символов')
-        if (content.trim() === '') return alert('Введите текст новой заметки')
-        model.addNote(title, content)
+        if (title.trim() === '') return alert('Введите текст названия');
+        if (title.trim().length > 50) {
+            viev.showMessage('.message-max-length');
+            return;
+        }
+        if (content.trim() === '') return alert('Введите текст новой заметки');
+        model.addNote(title, content);
+        viev.showMessage('.message-add-note');
     },
     addColor(color) {
         model.addColor(color)
@@ -209,6 +220,7 @@ const controller = {
     },
     deliteNote(noteId){
         model.deliteNote(noteId)
+        viev.showMessage('.message-removed-note')
     }
 
 }
