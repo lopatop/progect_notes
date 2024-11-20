@@ -139,9 +139,21 @@ const viev = {
 
     renderNotes(notes) {
         const list = document.querySelector('.notes-list');
+        const filterBox = document.querySelector('.filter-box');
+
         if (notes.length === 0){
-            return list.innerHTML = '';
+            filterBox.classList.add('hidden')
+            return list.innerHTML = `
+            <p class="no-notes-message">
+                У вас нет еще ни одной заметки.<br>
+                Заполните поля выше и создайте свою первую заметку!
+            </p>
+        `
+        }else {
+            filterBox.classList.remove('hidden');
         }
+        
+        
         let notesHTML = '';
         notes.forEach((note) => {
             notesHTML += ` 
@@ -181,7 +193,7 @@ const controller = {
         viev.renderNotesCount()
     },
     addNote(title, content) {
-        if (title.trim() === '') return alert('Введите текст название')
+        if (title.trim() === '') return alert('Введите текст названия')
         if (title.trim().length >= 50) return alert('длина больше 50 символов')
         if (content.trim() === '') return alert('Введите текст новой заметки')
         model.addNote(title, content)
