@@ -1,37 +1,37 @@
-const MOCK_NOTES = [
-    {
-        id: 1,
-        title: 'Работа с формами',
-        content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
-        color: 'F3DB7D',
-        isFavorite: true,
+// const MOCK_NOTES = [
+//     {
+//         id: 1,
+//         title: 'Работа с формами',
+//         content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
+//         color: 'F3DB7D',
+//         isFavorite: true,
 
-    },
-    {
-        id: 2,
-        title: 'Работа с формами',
-        content: 'К делённым полям формы можно обрат',
-        color: 'F3DB7D',
-        isFavorite: false,
+//     },
+//     {
+//         id: 2,
+//         title: 'Работа с формами',
+//         content: 'К делённым полям формы можно обрат',
+//         color: 'F3DB7D',
+//         isFavorite: false,
 
-    },
-    {
-        id: 2,
-        title: 'Работа с формами',
-        content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
-        color: 'F3DB7D',
-        isFavorite: false,
+//     },
+//     {
+//         id: 2,
+//         title: 'Работа с формами',
+//         content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
+//         color: 'F3DB7D',
+//         isFavorite: false,
 
-    },
-    {
-        id: 2,
-        title: 'Работа с формами',
-        content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
-        color: 'F3DB7D',
-        isFavorite: false,
+//     },
+//     {
+//         id: 2,
+//         title: 'Работа с формами',
+//         content: 'К делённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте nameобратиться через form.elements по значению, указанному в атрибуте name',
+//         color: 'F3DB7D',
+//         isFavorite: false,
 
-    },
-]
+//     },
+// ]
 
 
 const colors = {
@@ -48,7 +48,13 @@ const model = {
     noteColor: 'F3DB7D',
 
     addNote(title, content) {
-        const note = { id: new Date().getTime(), title: title, content, color: this.noteColor, isFavorite: false }
+        const note = {
+            id: new Date().getTime(),
+            title,
+            content,
+            color: this.noteColor,
+            isFavorite: false
+        }
         this.notes.unshift(note)
         viev.renderNotes(this.notes)
         viev.renderNotesCount()
@@ -63,6 +69,14 @@ const model = {
             }
         })
         viev.renderNotes(this.notes)
+    },
+    getNotesFavorite(){
+        this.notes = this.notes.filter((note) => note.isFavorite)
+        viev.renderNotes(this.notes)
+        viev.renderNotesCount()
+    },
+    getAllNotes() {
+        viev.renderNotes(this.notes); 
     },
 
 
@@ -101,9 +115,18 @@ const viev = {
 
         const list = document.querySelector('.notes-list');
         list.addEventListener('click', (event) => {
-            if (event.target.closest('.favorite-btn')) {
+            if (event.target.classList.contains('favorite-img')) {
                 const noteId = +event.target.closest('li').id;
                 controller.addFavorite(noteId);
+            }
+        });
+
+        const inputFavorite = document.querySelector('.filter-box');
+        inputFavorite.addEventListener('click', (event) => {
+            if (event.target.classList.contains('show-favorites')){
+                controller.getNotesFavorite()
+            } else {
+                controller.getAllNotes()
             }
         })
 
@@ -120,7 +143,7 @@ const viev = {
         <h3 class ="note-title">${note.title}</h3>
         <div class = del-vav-btn>
         <button class="favorite-btn">
-            <img src="${note.isFavorite ? './images/icons/active.svg' : './images/icons/inactive.svg'}" alt="Изображение сердечка">
+            <img class="favorite-img" src="${note.isFavorite ? './images/icons/active.svg' : './images/icons/inactive.svg'}" alt="Изображение сердечка">
         </button>
         <button class ="delite-btn"><img src="./images/icons/trash.svg" alt="Изображение корзины"></button>
         </div>
@@ -159,6 +182,12 @@ const controller = {
     },
     addFavorite(noteId) {
         model.addFavorite(noteId)
+    },
+    getNotesFavorite(){
+        model.getNotesFavorite()
+    },
+    getAllNotes(){
+        model.getAllNotes()
     }
 }
 
