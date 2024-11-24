@@ -72,26 +72,46 @@ const model = {
         this.updateView()
     },
     toggleFavoritesFilter() {
+        this.showFavorites = !this.showFavorites;
         this.updateView();
+
     },
 
     deliteNote(noteId) {
         this.notes = this.notes.filter((note) => note.id !== noteId)
+        const favoriteNotes = this.notes.filter(note => note.isFavorite);
+
+        if (favoriteNotes.length === 0) {
+            this.showFavorites = false;
+        }
         this.updateView()
     },
 
     updateView() {
         let notesToShow;
 
-
         if (this.showFavorites) {
             notesToShow = this.notes.filter((note) => note.isFavorite);
+
+            if (notesToShow.length === 0) {
+                this.showFavorites = false;
+            }
+
         } else {
             notesToShow = this.notes;
         }
 
 
         viev.renderNotes(notesToShow);
+
+        const filterBox = document.querySelector('.filter-box');
+        if (this.notes.some(note => note.isFavorite)) {
+            filterBox.classList.remove('hidden');
+        } else {
+            filterBox.classList.add('hidden');
+        }
+
+
         viev.renderNotesCount(notesToShow.length)
     },
 }
@@ -100,7 +120,7 @@ const model = {
 const viev = {
     init() {
         this.renderNotes(model.notes)
-        this.renderNotesCount()
+        this.renderNotesCount(model.notes.length)
 
         const form = document.querySelector('.form')
         const textTitle = document.querySelector('.text-title')
@@ -138,6 +158,9 @@ const viev = {
         const favoritesCheckbox = document.querySelector('.favorites-checkbox');
         favoritesCheckbox.addEventListener('change', () => {
             controller.toggleFavoritesFilter();
+            if (!model.showFavorites){
+                favoritesCheckbox.checked = false; 
+            }
         });
 
     },
@@ -192,9 +215,10 @@ const viev = {
         const message = document.querySelector(type)
         if (!message) return;
         message.classList.remove('hidden')
+
         setTimeout(() => {
             message.classList.add('hidden')
-        }, 3000)
+        }, 1500)
     }
 
 }
@@ -206,14 +230,22 @@ const controller = {
         viev.renderNotesCount()
     },
     addNote(title, content) {
-        if (title.trim() === '') return alert('Введите текст названия')
-        if (title.trim().length > 50) {
-            viev.showMessage('.message-max-length')
-            return;
+        if (title.trim() === '') {
+            return viev.showMessage('.message-content-title')
+        } else if
+            (title.trim().length > 50) {
+            return viev.showMessage('.message-max-length')
+        } else if
+            (content.trim() === '') {
+            return viev.showMessage('.message-content-title')
+        } else if
+            (content.trim().length > 300) {
+            return viev.showMessage('.message-max-length-content')
+
+        } else {
+            model.addNote(title, content);
+            viev.showMessage('.message-add-note')
         }
-        if (content.trim() === '') return alert('Введите текст новой заметки')
-        model.addNote(title, content);
-        viev.showMessage('.message-add-note')
     },
     addColor(color) {
         model.addColor(color)
@@ -222,8 +254,7 @@ const controller = {
         model.addFavorite(noteId)
     },
     toggleFavoritesFilter() {
-        model.showFavorites = !model.showFavorites;
-        model.updateView();
+        model.toggleFavoritesFilter()
     },
     deliteNote(noteId) {
         model.deliteNote(noteId)

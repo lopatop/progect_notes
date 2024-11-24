@@ -2,13 +2,18 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
+
+/* .hidden {
+    display: none;
+} */
 
 
 body {
     background: #fafafc;
     margin: 0;
-    font-family: "Montserrat", sans-serif;
+
 }
 
 header {
@@ -25,13 +30,13 @@ header {
 main{
     max-width: 1152px;
     margin: 24px 60px 0px 64px;
+    position: relative;
 }
 .header_count_tasks {
     display: flex;
     align-items: center;
     justify-content: end;
     width: 100%;
-    /* Устанавливаем ширину на 100% от родительского элемента */
 }
 
 .header-wrapper {
@@ -40,7 +45,6 @@ main{
 }
 
 .filter-box {
-    margin-top: 24px;
     display: flex;
     justify-content: end;
     font-weight: 400;
@@ -48,7 +52,14 @@ main{
     line-height: 2;
     color: #000;
     max-width: 1280px;
+    position: absolute; /* Фиксирует элемент поверх других */
+    top: 240px; /* Расположить вверху, если необходимо */
+    right: 0; /* Расположить справа */
     transition: opacity 0.3s ease, display 0s 0.3s;
+}
+.favorites-filter{
+    display: flex;
+    align-items: center
 }
 
 .filter-box.hidden {
@@ -56,19 +67,18 @@ main{
     display: none;
 }
 
-.hidden {
-    display: none;
-}
+
 
 .message-box {
+    position: absolute; 
+    top: 552px; 
+    right: 0px; 
     display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
-
+    flex-direction: column;
+    
 }
 
-.message-add-note {
+.message-add-note, .message-removed-note {
     border-radius: 10px;
     padding: 12px 24px;
     width: 230px;
@@ -79,33 +89,28 @@ main{
     font-size: 14px;
     line-height: 1.71429;
     color: #fff;
-    align-self: center;
-}
+    display: flex;
+    gap: 10px;
 
-.message-removed-note {
+}
+.message-max-length-content, .message-max-length, .message-content-title {
     border-radius: 10px;
     padding: 12px 24px;
     width: 230px;
     height: 48px;
     box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
-    background: #ff0000;
+    background: #ae1515;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.71429;
     color: #fff;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.message-max-length {
-    border-radius: 10px;
+.message-max-length, .message-max-length-content, .message-content-title {
     padding: 12px 24px;
-    width: 427px;
+    width: 450px;
     height: 48px;
-    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
-    background: #f23d5b;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.71429;
-    color: #fff;
-
 }

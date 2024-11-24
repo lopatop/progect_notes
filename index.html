@@ -71,21 +71,33 @@
         <div class="filter-box">
     <label class="favorites-filter">
         <input type="checkbox" id="favorites-filter" class="favorites-checkbox">
-        Показать избранные
+        Показать только избранные заметки
     </label>
 </div>
 
         <ul class="notes-list"></ul>
         <div class="message-box">
             <p class="message-add-note hidden">
-                <!-- <img src="./images/icons/Done.svg">  -->
+                <img src="./images/icons/Done.svg"> 
                 Заметка добавлена!
             </p>
-            <p class="message-removed-note hidden">Заметка удалена!</p>
+            <p class="message-removed-note hidden">
+                <img src="./images/icons/Done.svg"> 
+                Заметка удалена!
+            </p>
             <p class="message-max-length hidden">
-                <!-- <img src="./images/icons/warning.svg"> -->
+                <img src="./images/icons/warning.svg">
                 Максимальная длина заголовка - 50 символов!
             </p>
+            <p class="message-max-length-content hidden">
+                <img src="./images/icons/warning.svg">
+                Максимальная длина описания - 300 символов!
+            </p>
+            <p class="message-content-title hidden">
+                <img src="./images/icons/warning.svg">
+                Заполните все поля для ввода текста!
+            </p>
+
         </div>
     </main>
     <script src="./js/main.js"></script>
