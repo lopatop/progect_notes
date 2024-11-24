@@ -45,6 +45,7 @@ const colors = {
 const model = {
     notes: [],
     noteColor: 'F3DB7D',
+    showFavorites: false,
 
     addNote(title, content) {
         const note = {
@@ -55,36 +56,44 @@ const model = {
             isFavorite: false
         }
         this.notes.unshift(note)
-        viev.renderNotes(this.notes)
-        viev.renderNotesCount()
+        this.updateView()
     },
+
     addColor(color) {
         this.noteColor = colors[color.toUpperCase()]
     },
+
     addFavorite(noteId) {
         this.notes.forEach((note) => {
             if (note.id === noteId) {
                 note.isFavorite = !note.isFavorite
             }
         })
-        viev.renderNotes(this.notes)
+        this.updateView()
     },
-    getNotesFavorite(){
-        this.notes = this.notes.filter((note) => note.isFavorite)
-        viev.renderNotes(this.notes)
-        viev.renderNotesCount()
+    toggleFavoritesFilter() {
+        this.updateView();
     },
-    deliteNote(noteId){
+
+    deliteNote(noteId) {
         this.notes = this.notes.filter((note) => note.id !== noteId)
-        viev.renderNotes(this.notes)
-        viev.renderNotesCount()
+        this.updateView()
     },
 
+    updateView() {
+        let notesToShow;
 
-    renderNotesCount() {
-        return this.notes.length
+
+        if (this.showFavorites) {
+            notesToShow = this.notes.filter((note) => note.isFavorite);
+        } else {
+            notesToShow = this.notes;
+        }
+
+
+        viev.renderNotes(notesToShow);
+        viev.renderNotesCount(notesToShow.length)
     },
-
 }
 
 
@@ -126,12 +135,10 @@ const viev = {
             }
         })
 
-        const inputFavorite = document.querySelector('.filter-box')
-        inputFavorite.addEventListener('click', (event) => {
-            if (event.target.classList.contains('show-favorites')){
-                controller.getNotesFavorite()
-            } 
-        })
+        const favoritesCheckbox = document.querySelector('.favorites-checkbox');
+        favoritesCheckbox.addEventListener('change', () => {
+            controller.toggleFavoritesFilter();
+        });
 
     },
 
@@ -139,8 +146,8 @@ const viev = {
     renderNotes(notes) {
         const list = document.querySelector('.notes-list')
         const filterBox = document.querySelector('.filter-box')
-        
-        if (notes.length === 0){
+
+        if (notes.length === 0) {
             filterBox.classList.add('hidden')
             return list.innerHTML = `
             <p class="no-notes-message">
@@ -148,7 +155,7 @@ const viev = {
                 Заполните поля выше и создайте свою первую заметку!
             </p>
         `
-        }else {
+        } else {
             filterBox.classList.remove('hidden');
         }
 
@@ -177,9 +184,9 @@ const viev = {
 
 
 
-    renderNotesCount() {
+    renderNotesCount(count) {
         const countNotes = document.querySelector('.count_notes')
-        countNotes.textContent = model.renderNotesCount()
+        countNotes.textContent = count
     },
     showMessage(type) {
         const message = document.querySelector(type)
@@ -214,10 +221,11 @@ const controller = {
     addFavorite(noteId) {
         model.addFavorite(noteId)
     },
-    getNotesFavorite(){
-        model.getNotesFavorite()
+    toggleFavoritesFilter() {
+        model.showFavorites = !model.showFavorites;
+        model.updateView();
     },
-    deliteNote(noteId){
+    deliteNote(noteId) {
         model.deliteNote(noteId)
         viev.showMessage('.message-removed-note')
     }

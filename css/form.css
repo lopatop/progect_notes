@@ -25,7 +25,9 @@ form {
     max-height: 228px;
     box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
     background: #fff;
-    margin: 24px 62px;
+   
+    
+    margin-top: 24px;
     font-weight: 400;
     color: #919191;
     border: 1px solid #e8e8e8;
@@ -142,4 +144,8 @@ input:focus,
 textarea:focus {
     outline: none;
     border-color: #e8e8e8;
+}
+
+textarea {
+    resize: none;
 }
