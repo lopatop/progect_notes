@@ -117,3 +117,14 @@ main{
 .hidden {
     display: none;
 }
+
+@media  (max-width : 375px) {
+    header{
+        padding: 10px;
+
+    }
+    main{
+        margin: 10px;
+    }
+    
+}
