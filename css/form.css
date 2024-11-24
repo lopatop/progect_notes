@@ -39,30 +39,27 @@ form {
     padding: 6px 12px;
     max-width: 344px;
     width: auto;
-    flex-grow: 1;
     height: auto;
     min-height: 36px;
 }
 
 .text-content {
-    max-width: 824px;
-    width: auto;
+    flex-grow: 1;
+    width: auto; 
+    min-width: 100px; 
+    max-width: 824px; 
     border: 1px solid #e8e8e8;
     border-radius: 10px;
-    padding: 0px 12px;
-    flex-grow: 1;
-    min-height: 96px;
-    height: auto; /* Автоматическое изменение */
-    resize: vertical;
-    overflow-y: auto; /* Добавьте прокрутку */
+    padding: 12px;
+    min-height: 96px; 
+    resize: vertical; 
+    flex-shrink: 1;
 }
 
 .form-text-button-radio {
     display: flex;
-    justify-content: space-between;
     gap: 24px;
     margin-top: 12px;
-    flex-grow: 0;
     flex-basis: auto;
 }
 
@@ -133,16 +130,19 @@ form {
 }
 
 .add-note {
-    padding-right: 24px;
+    padding: 8px 16px; 
     border-radius: 10px;
     border: none;
-    width: 232px;
-    height: 36px;
+    width: 100%; 
+    max-width: 232px; 
+    min-width: 120px; 
+    height: auto; 
     background: #457cdc;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     color: #fff;
+    text-align: center; 
 }
 
 .icon-button {
@@ -156,6 +156,26 @@ textarea:focus {
     border-color: #e8e8e8;
 }
 
-textarea {
-    resize: vertical
+
+@media (min-width: 555px) and (max-width: 766px) {
+    .form-text-button-radio{
+        flex-wrap: wrap;
+    }
+    .text-content{
+        min-height: 50px
+    }
+    .description{
+        height: 30px;
+    }
+    .radio-button-container{
+        width: 100%;
+        padding-top: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .add-note{
+        align-items: center;
+        font-size: 12px;
+    }
 }

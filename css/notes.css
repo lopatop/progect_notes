@@ -90,3 +90,10 @@ ul {
     overflow-wrap: break-word;
 
 }
+
+@media screen and (max-width: 1024px) {
+    .notes-list li {
+        width: 250px;
+    }
+
+}
