@@ -97,3 +97,12 @@ ul {
     }
 
 }
+
+@media (max-width : 375px) {
+    .notes-list li {
+        width: 280px;
+    }
+    ul {
+        justify-content: center;
+    }
+}
