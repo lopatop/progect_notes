@@ -143,6 +143,13 @@ form {
     line-height: 1.5;
     color: #fff;
     text-align: center; 
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.add-note:active{
+    transform: translateY(2px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .icon-button {
