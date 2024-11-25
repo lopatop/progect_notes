@@ -78,9 +78,17 @@ ul {
     background: transparent;
     border: none;
     padding: 0;
-
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
-
+.favorite-btn:active{
+    transform: translateY(3px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.delite-btn:active{
+    transform: translateY(3px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
 .delite-btn {
     margin-left: 12px;
 }
