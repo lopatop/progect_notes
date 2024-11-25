@@ -179,6 +179,37 @@ textarea:focus {
         font-size: 12px;
     }
 }
+@media  (max-width : 425px) {
+    form {
+        margin-top: 10px;
+        padding: 10px;
+        height: 400px;
+    }
+    .form-text-button-radio{
+        gap: 0;
+        flex-direction: column;
+    }
+    .text-content{
+        min-height: 26px;
+        height: 36px;
+        padding: 5px;
+    }
+    .radio-list{
+        width: 333px;
+        max-width: 100%;
+        height: 60px;
+        justify-content: space-around;
+    }
+    .fieldset{
+        margin-bottom: 5px;
+    }
+    .add-note{
+        max-width: 100%;
+        height: 28px;
+    }
+    
+}
+
 @media  (max-width : 375px) {
     form {
         margin-top: 10px;
@@ -201,7 +232,7 @@ textarea:focus {
         justify-content: space-around;
     }
     .fieldset{
-        margin-bottom: 8px;
+        margin-bottom: 5px;
     }
     .add-note{
         max-width: 100%;

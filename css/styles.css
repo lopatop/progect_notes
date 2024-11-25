@@ -117,14 +117,55 @@ main{
 .hidden {
     display: none;
 }
-
-@media  (max-width : 375px) {
+@media  (max-width : 425px) {
     header{
         padding: 10px;
+        max-height: 40px;
+        padding-top: 10px;
 
     }
     main{
         margin: 10px;
     }
-    
+    .message-max-length-content, .message-max-length, .message-content-title{
+        max-width: 230px;
+        max-height: 40px;
+        font-size: 8px;
+        padding: 6px 12px;
+        align-items: center;
+    }
+    .message-add-note, .message-removed-note{
+        max-width: 150px;
+        max-height: 40px;
+        font-size: 8px;
+        padding: 6px 12px;
+        align-items: center;
+    }
+}
+
+
+@media  (max-width : 375px) {
+    header{
+        padding: 10px;
+        max-height: 40px;
+        padding-top: 10px;
+
+    }
+    main{
+        margin: 10px;
+    }
+    .message-max-length-content, .message-max-length, .message-content-title{
+        max-width: 230px;
+        max-height: 40px;
+        font-size: 8px;
+        padding: 6px 12px;
+        align-items: center;
+    }
+    .message-add-note, .message-removed-note{
+        max-width: 150px;
+        max-height: 40px;
+        font-size: 8px;
+        padding: 6px 12px;
+        align-items: center;
+    }
 }
