@@ -47,6 +47,17 @@ const model = {
     noteColor: 'F3DB7D',
     showFavorites: false,
 
+    saveLocalStorage() {
+        localStorage.setItem('notesData', JSON.stringify(this));
+    },
+    
+    loadLocalStorage() {
+        const dataNotes = localStorage.getItem('notesData');
+        if (dataNotes) {
+            Object.assign(this, JSON.parse(dataNotes));
+        }
+    },
+
     addNote(title, content) {
         const note = {
             id: new Date().getTime(),
@@ -56,11 +67,13 @@ const model = {
             isFavorite: false
         }
         this.notes.unshift(note)
+        this.saveLocalStorage()
         this.updateView()
     },
 
     addColor(color) {
         this.noteColor = colors[color.toUpperCase()]
+        this.saveLocalStorage()
     },
 
     addFavorite(noteId) {
@@ -69,11 +82,15 @@ const model = {
                 note.isFavorite = !note.isFavorite
             }
         })
+        this.saveLocalStorage()
         this.updateView()
+        
     },
     toggleFavoritesFilter() {
         this.showFavorites = !this.showFavorites;
+        this.saveLocalStorage()
         this.updateView();
+        
 
     },
 
@@ -84,7 +101,9 @@ const model = {
         if (favoriteNotes.length === 0) {
             this.showFavorites = false;
         }
+        this.saveLocalStorage()
         this.updateView()
+        
     },
 
     updateView() {
@@ -110,7 +129,6 @@ const model = {
         } else {
             filterBox.classList.add('hidden');
         }
-
 
         viev.renderNotesCount(notesToShow.length)
     },
@@ -265,6 +283,8 @@ const controller = {
 
 function init() {
     viev.init()
+    model.loadLocalStorage()
+    model.updateView()
 }
 
 init()
