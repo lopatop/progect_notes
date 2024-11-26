@@ -1,9 +1,4 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-}
+
 
 fieldset {
     display: flex;
