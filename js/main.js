@@ -94,42 +94,16 @@ const model = {
 
     },
 
-    deliteNote(noteId) {
+    deleteNote(noteId) {
         this.notes = this.notes.filter((note) => note.id !== noteId)
-        const favoriteNotes = this.notes.filter(note => note.isFavorite);
-
-        if (favoriteNotes.length === 0) {
-            this.showFavorites = false;
-        }
         this.saveLocalStorage()
         this.updateView()
         
     },
 
     updateView() {
-        let notesToShow;
-
-        if (this.showFavorites) {
-            notesToShow = this.notes.filter((note) => note.isFavorite);
-
-            if (notesToShow.length === 0) {
-                this.showFavorites = false;
-            }
-
-        } else {
-            notesToShow = this.notes;
-        }
-
-
+        const notesToShow = this.showFavorites ? this.notes.filter(note => note.isFavorite) : this.notes;
         viev.renderNotes(notesToShow);
-
-        const filterBox = document.querySelector('.filter-box');
-        if (this.notes.some(note => note.isFavorite)) {
-            filterBox.classList.remove('hidden');
-        } else {
-            filterBox.classList.add('hidden');
-        }
-
         viev.renderNotesCount(notesToShow.length)
     },
 }
@@ -167,19 +141,18 @@ const viev = {
                 const noteId = +event.target.closest('li').id
                 controller.addFavorite(noteId);
             }
-            if (event.target.classList.contains('delite-note-img')) {
+            if (event.target.classList.contains('delete-note-img')) {
                 const noteId = +event.target.closest('li').id
-                controller.deliteNote(noteId)
+                controller.deleteNote(noteId)
             }
         })
+        const checkboxFavorite = document.querySelector('.favorites-checkbox')
+        checkboxFavorite.addEventListener('change', (event)=> {
+            controller.toggleFavoritesFilter()
+        })
 
-        const favoritesCheckbox = document.querySelector('.favorites-checkbox');
-        favoritesCheckbox.addEventListener('change', () => {
-            controller.toggleFavoritesFilter();
-            if (!model.showFavorites){
-                favoritesCheckbox.checked = false; 
-            }
-        });
+
+
 
     },
 
@@ -189,15 +162,12 @@ const viev = {
         const filterBox = document.querySelector('.filter-box')
 
         if (notes.length === 0) {
-            filterBox.classList.add('hidden')
             return list.innerHTML = `
             <p class="no-notes-message">
                 У вас нет еще ни одной заметки.<br>
                 Заполните поля выше и создайте свою первую заметку!
             </p>
         `
-        } else {
-            filterBox.classList.remove('hidden');
         }
 
         let notesHTML = '';
@@ -210,8 +180,8 @@ const viev = {
         <button class="favorite-btn">
             <img class="favorite-note-img" src="${note.isFavorite ? './images/icons/active.svg' : './images/icons/inactive.svg'}" alt="Изображение сердечка">
         </button>
-        <button class ="delite-btn">
-        <img class = "delite-note-img" src="./images/icons/trash.svg" alt="Изображение корзины">
+        <button class ="delete-btn">
+        <img class = "delete-note-img" src="./images/icons/trash.svg" alt="Изображение корзины">
         </button>
         </div>
     </div>
@@ -231,7 +201,6 @@ const viev = {
     },
     showMessage(type) {
         const message = document.querySelector(type)
-        if (!message) return;
         message.classList.remove('hidden')
 
         setTimeout(() => {
@@ -245,7 +214,7 @@ const viev = {
 
 const controller = {
     renderNotesCount() {
-        viev.renderNotesCount()
+        viev.renderNotesCount(model.notes.length)
     },
     addNote(title, content) {
         if (title.trim() === '') {
@@ -274,8 +243,8 @@ const controller = {
     toggleFavoritesFilter() {
         model.toggleFavoritesFilter()
     },
-    deliteNote(noteId) {
-        model.deliteNote(noteId)
+    deleteNote(noteId) {
+        model.deleteNote(noteId)
         viev.showMessage('.message-removed-note')
     }
 

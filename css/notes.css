@@ -69,12 +69,12 @@ ul {
     margin: 0px;
 }
 
-.delite-btn .favorite-btn img {
+.delete-btn .favorite-btn img {
     width: 100px;
 }
 
 .favorite-btn,
-.delite-btn {
+.delete-btn {
     background: transparent;
     border: none;
     padding: 0;
@@ -85,11 +85,11 @@ ul {
     transform: translateY(3px); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
-.delite-btn:active{
+.delete-btn:active{
     transform: translateY(3px); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
-.delite-btn {
+.delete-btn {
     margin-left: 12px;
 }
 
